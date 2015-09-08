@@ -3,27 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package Lab3;
 
 /**
  *
  * @author Brester
  */
-public class AreaCalculatorService {
-    
-    
-    public double getRectangleArea(String length, String width){
-        double w, l,area;
+public class CircleAreaCalculator {
+    public double getCircleArea(String radius){
+        double r;
+        double area;
+        final double pi = 3.14159265459 ;
         try{
-            w = Double.parseDouble(width);
-            l = Double.parseDouble(length);
-            area = l * w;
-            
+           r = Double.parseDouble(radius);
+           area = r*pi;
         }catch(Exception e){
             area = 0;
         }
-        
         return area;
     }
-    
 }

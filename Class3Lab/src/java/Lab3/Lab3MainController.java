@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package Lab3;
 
+import Lab2.*;
+import Lab1.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,14 +15,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.AreaCalculatorService;
 
 /**
  *
  * @author Brester
  */
-@WebServlet(name = "MainController", urlPatterns = {"/MainController"})
-public class MainController extends HttpServlet {
+@WebServlet(name = "MainControllerLab3", urlPatterns = {"/MainControllerLab3"})
+public class Lab3MainController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,19 +35,41 @@ public class MainController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String length = request.getParameter("length");
-        String width = request.getParameter("width");
-        
-        AreaCalculatorService aCService = new AreaCalculatorService();
-        
-        double area = aCService.getRectangleArea(length, width);
-        
-        request.setAttribute("area", area);
-        
+        switch (request.getParameter("action")) {
+           case "Calculate Rectangle":
+                {
+                    String length = request.getParameter("length");
+                    String width = request.getParameter("width");
+                    RectangleAreaCalculatorService aCService = new RectangleAreaCalculatorService();
+                    double area = aCService.getRectangleArea(length, width);
+                    request.setAttribute("rectangleArea", area);
+                   
+                    
+                    break;
+                } 
+            case "Calculate Circle":
+                {
+                    String radius = request.getParameter("radius");
+                    CircleAreaCalculator  aCService = new CircleAreaCalculator();
+                    double area = aCService.getCircleArea(radius);
+                    request.setAttribute("circleArea", area);
+                    
+                    break;
+                }
+            case "Calculate Triangle":
+            {
+                String base = request.getParameter("base");
+                String height = request.getParameter("height");
+                TriangleAreaCalculator aCService = new TriangleAreaCalculator();
+                
+                double area = aCService.getTriangleArea(base,height);
+                request.setAttribute("triangleArea", area);
+                
+                break;
+            }
+        }
          RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
-        view.forward(request, response);
-        
+         view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
