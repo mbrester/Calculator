@@ -44,7 +44,7 @@ public class Lab2MainController extends HttpServlet {
         
         request.setAttribute("area", area);
         
-         RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+         RequestDispatcher view = request.getRequestDispatcher("/indexLab2.jsp");
         view.forward(request, response);
         
     }
