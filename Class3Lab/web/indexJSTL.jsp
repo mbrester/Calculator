@@ -7,67 +7,77 @@ scripltlets, for one thing it is alot faster to use this style.
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSTL tests</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
     <body>
         <h1>Area Calculator</h1>
-        <div>
-            <h2>Calculate The area of a rectangle</h2>
-            <form method="POST" action="MainControllerLab3">
+        <div class="row">
+            <div class="col-sm-4">
+                <h2>Calculate The area of a rectangle</h2>
+                <form method="POST" action="MainControllerLab3">
 
-                <div>
+
                     <p>Enter the Length <input type="text"  name="length"/></p>
                     <p>Enter the Width <input type="text" name="width"/></p>
-                    <p><input type="submit" name="action" value="Calculate Rectangle"/></p>
-                    <div>
-                       
-                        <p><c:if test="${rectangleArea > 0}">
-                            <p>The area is <c:out value='${rectangleArea}'/>
+                    <p><input type="submit" class="btn btn-success "name="action" value="Calculate Rectangle"/></p>
+
+
+                    <p><c:if test="${rectangleArea > 0}">
+                        <p>The area is <c:out value='${rectangleArea}'/>
                         </c:if></p>
 
-                    </div>
 
-                </div>
+                </form>
 
-                <div>
-                    <h1>Calculate The Area of a Circle</h1>
+            </div>
+            <div class="col-sm-4">
 
-                    <div>
+                <h1>Calculate The Area of a Circle</h1>
 
-                        <p>Enter The Radius <input type="text" name="radius"/> </p>
-                        <p><input type="submit" name="action" value="Calculate Circle"</p>
 
-                        <div>
-                            <p><c:if test="${circleArea > 0}">
-                            <p>The area is <c:out value='${circleArea}'/>
+                <form method="POST" action="MainControllerLab3">
+                    <p>Enter The Radius <input type="text" name="radius"/> </p>
+                    <p><input type="submit" class="btn btn-success " name="action" value="Calculate Circle"</p>
+
+
+                    <p><c:if test="${circleArea > 0}">
+                        <p>The area is <c:out value='${circleArea}'/>
                         </c:if></p>
-                        </div>
-                    </div>
 
-                </div> 
-                <div>
+                </form>
+
+
+
+            </div> 
+            <div class="col-sm-4">
+                <form method="POST" action="MainControllerLab3">
                     <h1>Calculate the Area of A Triangle</h1>    
 
 
                     <p>Enter the Height <input type="text" name="height"/></p>
                     <p>Enter the Base <input type="text" name="base"/>
                     </p>
-                    <p><input type="submit" name="action" value="Calculate Triangle"/></p>
+                    <p><input type="submit" class="btn btn-success " name="action" value="Calculate Triangle"/></p>
                     <p><c:if test="${triangleArea > 0}">
-                            <p>The area is <c:out value='${triangleArea}'/>
+                        <p>The area is <c:out value='${triangleArea}'/>
                         </c:if></p>
 
-
-                </div>
-            </form>
-        </div>            
+                </form>
+            </div>
 
 
-    </div>
-</body>
+
+
+        </div>
+
+    </body>
 </html>

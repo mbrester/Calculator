@@ -68,7 +68,7 @@ public class Lab3MainController extends HttpServlet {
                 break;
             }
         }
-         RequestDispatcher view = request.getRequestDispatcher("/indexLab3.jsp");
+         RequestDispatcher view = request.getRequestDispatcher("/indexJSTL.jsp");
          view.forward(request, response);
     }
 
